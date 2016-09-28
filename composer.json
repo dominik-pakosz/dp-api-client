@@ -1,11 +1,15 @@
 {
-    "name": "umitakkaya/dp-api-client",
-    "description": "Sample client for DocPlanner API",
+    "name": "dp-api-client",
+    "description": "Sample client for DocPlanner API v3",
     "license": "MIT",
     "authors": [
         {
             "name": "Umit AKKAYA",
             "email": "umit.akkaya@docplanner.com"
+        },
+        {
+            "name": "Dominik Pakosz",
+            "email": "dominik.pakosz@znanylekarz.pl"
         }
     ],
     "minimum-stability": "stable",

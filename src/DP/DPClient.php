@@ -10,15 +10,18 @@ namespace DP;
 
 use DP\Model\Address;
 use DP\Model\AddressesResponse;
+use DP\Model\AddressService;
+use DP\Model\AddressServices;
 use DP\Model\BookingsResponse;
 use DP\Model\BookVisitRequest;
 use DP\Model\BookVisitResponse;
+use DP\Model\CalendarBreak;
+use DP\Model\CalendarBreaks;
 use DP\Model\CancelVisitResponse;
-use DP\Model\DeleteDoctorServiceResponse;
+use DP\Model\DeleteAddressServiceResponse;
+use DP\Model\DeleteCalendarBreakResponse;
 use DP\Model\DeleteSlotsResponse;
 use DP\Model\Doctor;
-use DP\Model\DoctorService;
-use DP\Model\DoctorServicesResponse;
 use DP\Model\DoctorsResponse;
 use DP\Model\Error;
 use DP\Model\Facility;
@@ -39,8 +42,8 @@ use JMS\Serializer\Serializer;
 class DPClient
 {
 	public static $PREFIXES = [
-		'pl' => 'https://www.znanylekarz.pl/api/v2/integration/',
-		'tr' => 'https://www.eniyihekim.com/api/v2/integration/'
+		'pl' => 'https://www.znanylekarz.pl/api/v3/integration/',
+		'tr' => 'https://www.doctortakvimi.com/api/v3/integration/'
 	];
 
 
@@ -205,13 +208,13 @@ class DPClient
 	 * @param string                 $className If you omit this parameter you will get Response object
 	 * @param DeserializationContext $context
 	 *
-	 * @return FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|DoctorServicesResponse|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|SlotsResponse|Response
+	 * @return FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|SlotsResponse|Response
 	 * @throws \Exception
 	 */
 	private function authorizedRequest(RequestInterface $request, $className = null, DeserializationContext $context = null)
 	{
 
-		/** @var FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|DoctorServicesResponse|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|SlotsResponse $object */
+		/** @var FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|SlotsResponse $object */
 		/** @var Error $error */
 		$object   = null;
 		$response = null;
@@ -240,7 +243,8 @@ class DPClient
 			$response   = $e->getResponse();
 			$statusCode = $response->getStatusCode();
 
-			$error = $this->serializer->deserialize($response->getBody(true), Error::class, 'json');
+            $body = $response->getBody(true);
+			$error = $this->serializer->deserialize($body?:'{}', Error::class, 'json');
 			$error->setCode($statusCode);
 		}
 
@@ -254,7 +258,8 @@ class DPClient
 		//If not then we should simply return the expected class instance with data.
 		if ($error === null)
 		{
-			$object = $this->serializer->deserialize($response->getBody(true), $className, 'json', $context);
+		    $body = $response->getBody(true);
+            $object = $this->serializer->deserialize($body?:'{}', $className, 'json', $context);
 		}
 		else
 		{
@@ -496,7 +501,7 @@ class DPClient
 				'addressId'  => $addressId,
 				'start'      => $start->format('c'),
 				'end'        => $end->format('c'),
-				'with'       => ['booking.service', 'booking.patient']
+				'with'       => ['booking.address_service', 'booking.patient']
 			]
 		]);
 
@@ -531,143 +536,6 @@ class DPClient
 	}
 
 	/**
-	 * @param int $facilityId
-	 * @param int $doctorId
-	 *
-	 * @return DoctorServicesResponse
-	 */
-	public function getDoctorServices($facilityId, $doctorId)
-	{
-		/** @var DoctorServicesResponse $doctorServices */
-		$request        = $this->client->get([
-			'facilities/{facilityId}/doctors/{doctorId}/services', [
-				'facilityId' => $facilityId,
-				'doctorId'   => $doctorId
-			]
-		]);
-		$doctorServices = $this->authorizedRequest(
-			$request,
-			DoctorServicesResponse::class,
-			DeserializationContext::create()->setGroups(['Default', 'get'])
-		);
-
-		return $doctorServices;
-	}
-
-	/**
-	 * @param int       $facilityId
-	 * @param int       $doctorId
-	 * @param int       $addressId
-	 * @param \DateTime $start
-	 *
-	 * @return DoctorServicesResponse
-	 */
-	public function getDoctorServicesForSlot($facilityId, $doctorId, $addressId, $start)
-	{
-		/** @var DoctorServicesResponse $doctorServices */
-		$request        = $this->client->get([
-			'facilities/{facilityId}/doctors/{doctorId}/services{?address_id,start}', [
-				'facilityId' => $facilityId,
-				'doctorId'   => $doctorId,
-				'address_id' => $addressId,
-				'start'      => $start->format('c')
-			]
-		]);
-		$doctorServices = $this->authorizedRequest(
-			$request,
-			DoctorServicesResponse::class,
-			DeserializationContext::create()->setGroups(['Default', 'get'])
-		);
-
-		return $doctorServices;
-	}
-
-	/**
-	 * @param int           $facilityId
-	 * @param int           $doctorId
-	 * @param DoctorService $doctorService
-	 *
-	 * @return DoctorService
-	 */
-	public function addDoctorService($facilityId, $doctorId, $doctorService)
-	{
-
-		$request = $this->client->post([
-			'facilities/{facilityId}/doctors/{doctorId}/services', [
-				'facilityId' => $facilityId,
-				'doctorId'   => $doctorId
-			]
-		],
-			null,
-			$this->serializer->serialize($doctorService, 'json', SerializationContext::create()->setGroups(['post']))
-		);
-
-		/** @var DoctorService $newDoctorService */
-		$newDoctorService = $this->authorizedRequest(
-			$request,
-			DoctorService::class,
-			DeserializationContext::create()->setGroups(['get'])
-		);
-
-
-		return $newDoctorService;
-	}
-
-	/**
-	 * @param int           $facilityId
-	 * @param int           $doctorId
-	 * @param DoctorService $doctorService
-	 *
-	 * @return DoctorService
-	 */
-	public function patchDoctorService($facilityId, $doctorId, $doctorService)
-	{
-		$request = $this->client->patch([
-			'facilities/{facilityId}/doctors/{doctorId}/services/{doctorServiceId}', [
-				'facilityId'      => $facilityId,
-				'doctorId'        => $doctorId,
-				'doctorServiceId' => $doctorService->getId()
-			]
-		],
-			[],
-			$this->serializer->serialize($doctorService, 'json', SerializationContext::create()->setGroups(['patch']))
-		);
-
-
-		/** @var DoctorService $newDoctorService */
-		$newDoctorService = $this->authorizedRequest(
-			$request,
-			DoctorService::class,
-			DeserializationContext::create()->setGroups(['get'])
-		);
-
-
-		return $newDoctorService;
-	}
-
-	/**
-	 * @param $facilityId
-	 * @param $doctorId
-	 * @param $doctorServiceId
-	 *
-	 * @return DeleteDoctorServiceResponse
-	 */
-	public function deleteDoctorService($facilityId, $doctorId, $doctorServiceId)
-	{
-		$request = $this->client->delete([
-			'facilities/{facilityId}/doctors/{doctorId}/services/{doctorServiceId}', [
-				'facilityId'      => $facilityId,
-				'doctorId'        => $doctorId,
-				'doctorServiceId' => $doctorServiceId
-			]
-		]);
-
-		$response = $this->authorizedRequest($request, DeleteDoctorServiceResponse::class);
-
-		return $response;
-	}
-
-	/**
 	 * @return ServicesResponse
 	 */
 	public function getServices()
@@ -690,4 +558,231 @@ class DPClient
 
 		return $response;
 	}
+
+//add api v3
+    /**
+     * @param $facilityId
+     * @param $doctorId
+     * @param $addressId
+     *
+     * @return AddressServices
+     */
+    public function getAddressServices($facilityId, $doctorId, $addressId)
+    {
+        $request = $this->client->get([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/services', [
+                'facilityId' => $facilityId,
+                'doctorId'   => $doctorId,
+                'addressId'  => $addressId
+            ]
+        ]);
+        $addressServices = $this->authorizedRequest(
+            $request,
+            AddressServices::class,
+            DeserializationContext::create()->setGroups(['Default', 'get'])
+        );
+
+        return $addressServices;
+    }
+
+    /**
+     * @param int           $facilityId
+     * @param int           $doctorId
+     * @param int           $addressId
+     * @param AddressService $addressService
+     *
+     * @return AddressService
+     */
+    public function patchAddressService($facilityId, $doctorId, $addressId, $addressService)
+    {
+        $request = $this->client->patch([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/services/{addressServiceId}', [
+                'facilityId'      => $facilityId,
+                'doctorId'        => $doctorId,
+                'addressId'       => $addressId,
+                'addressServiceId' => $addressService->getId()
+            ]
+        ],
+            [],
+            $this->serializer->serialize($addressService, 'json', SerializationContext::create()->setGroups(['patch']))
+        );
+
+
+        /** @var AddressService $newAddressService */
+        $newAddressService = $this->authorizedRequest(
+            $request,
+            AddressService::class,
+            DeserializationContext::create()->setGroups(['get'])
+        );
+
+
+        return $newAddressService;
+    }
+
+    /**
+     * @param int $facilityId
+     * @param int $doctorId
+     * @param int $addressId
+     * @param int $addressServiceId
+     *
+     * @return DeleteAddressServiceResponse $response
+     */
+    public function deleteAddressService($facilityId, $doctorId, $addressId, $addressServiceId)
+    {
+        $request = $this->client->delete([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/services/{addressServiceId}', [
+                'facilityId'      => $facilityId,
+                'doctorId'        => $doctorId,
+                'addressId'       => $addressId,
+                'addressServiceId' => $addressServiceId
+            ]
+        ]);
+
+        $response = $this->authorizedRequest($request, DeleteAddressServiceResponse::class);
+
+        return $response;
+    }
+
+    /**
+     * @param int $facilityId
+     * @param int $doctorId
+     * @param int $addressId
+     * @param AddressService $addressService
+     *
+     * @return AddressService
+     */
+    public function addAddressService($facilityId, $doctorId, $addressId, $addressService)
+    {
+        $request = $this->client->post([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/services', [
+                'facilityId' => $facilityId,
+                'doctorId'   => $doctorId,
+                'addressId'  => $addressId
+            ]
+        ],
+            null,
+            $this->serializer->serialize($addressService, 'json', SerializationContext::create()->setGroups(['post']))
+        );
+
+        /** @var AddressService $newAddressService */
+        $newAddressService = $this->authorizedRequest(
+            $request,
+            AddressService::class,
+            DeserializationContext::create()->setGroups(['get'])
+        );
+
+
+        return $newAddressService;
+    }
+
+    /**
+     * @param int       $facilityId
+     * @param int       $doctorId
+     * @param int       $addressId
+     * @param \DateTime $start
+     *
+     * @return AddressServices
+     */
+    public function getAddressServicesForSlot($facilityId, $doctorId, $addressId, $start)
+    {
+        /** @var AddressServices $addressServices */
+        $request = $this->client->get([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/services{?start}', [
+                'facilityId' => $facilityId,
+                'doctorId'   => $doctorId,
+                'addressId'  => $addressId,
+                'start'      => $start->format('c')
+            ]
+        ]);
+
+        $addressServices = $this->authorizedRequest(
+            $request,
+            AddressServices::class,
+            DeserializationContext::create()->setGroups(['Default', 'get'])
+        );
+
+        return $addressServices;
+    }
+
+    /**
+     * @param $facilityId
+     * @param $doctorId
+     * @param $addressId
+     * @param $since
+     * @param $till
+     * @return CalendarBreaks $calendarBreaks
+     **/
+    public function getCalendarBreaks($facilityId, $doctorId, $addressId, $since, $till)
+    {
+        $request = $this->client->get([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/breaks{?since,till}', [
+                'facilityId' => $facilityId,
+                'doctorId'   => $doctorId,
+                'addressId'  => $addressId,
+                'since'      => $since,
+                'till'       => $till
+            ]
+        ]);
+
+        $calendarBreaks = $this->authorizedRequest(
+            $request,
+            CalendarBreaks::class,
+            DeserializationContext::create()->setGroups(['Default', 'get'])
+        );
+
+        return $calendarBreaks;
+    }
+
+    /**
+     * @param $facilityId
+     * @param $doctorId
+     * @param $addressId
+     * @param CalendarBreak $calendarBreak
+     * @return CalendarBreak
+     */
+    public function addCalendarBreak($facilityId, $doctorId, $addressId, $calendarBreak)
+    {
+        $request = $this->client->post([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/breaks', [
+                'facilityId' => $facilityId,
+                'doctorId'   => $doctorId,
+                'addressId'  => $addressId,
+            ]
+        ],
+            null,
+            $this->serializer->serialize($calendarBreak, 'json', SerializationContext::create()->setGroups(['post']))
+        );
+
+        $newCalendarBreak = $this->authorizedRequest(
+            $request,
+            CalendarBreak::class,
+            DeserializationContext::create()->setGroups(['Default', 'get'])
+        );
+
+        return $newCalendarBreak;
+    }
+
+    /**
+     * @param int $facilityId
+     * @param int $doctorId
+     * @param int $addressId
+     * @param int $calendarBreakId
+     *
+     * @return DeleteCalendarBreakResponse $response
+     */
+    public function deleteCalendarBreak($facilityId, $doctorId, $addressId, $calendarBreakId)
+    {
+        $request = $this->client->delete([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/breaks/{calendarBreakId}', [
+                'facilityId'      => $facilityId,
+                'doctorId'        => $doctorId,
+                'addressId'       => $addressId,
+                'calendarBreakId' => $calendarBreakId
+            ]
+        ]);
+
+        $response = $this->authorizedRequest($request, DeleteCalendarBreakResponse::class);
+
+        return $response;
+    }
 }

@@ -1,24 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: umitakkaya
- * Date: 22/09/15
- * Time: 14:34
- */
 
 namespace DP\Model;
 
 use JMS\Serializer\Annotation\Type;
 
-class DoctorServicesResponse extends AbstractErrorResponse
+class CalendarBreaks extends AbstractErrorResponse
 {
 	/**
-	 * @Type("array<DP\Model\DoctorService>")
+	 * @Type("array<DP\Model\CalendarBreak>")
 	 */
 	private $_items;
 
 	/**
-	 * @return DoctorService[]
+	 * @return CalendarBreak[]
 	 */
 	public function getItems()
 	{
@@ -26,7 +20,7 @@ class DoctorServicesResponse extends AbstractErrorResponse
 	}
 
 	/**
-	 * @param DoctorService[]
+	 * @param CalendarBreak[]
 	 */
 	public function setItems($items)
 	{

@@ -37,8 +37,12 @@
                 <div>{{ $booking->getPatient()->getPhone() }}</div>
             </td>
             <td>
-                {{ $booking->getService()->getName() }}
-                <div>(ID: {{ $booking->getService()->getId() }})</div>
+                @if($booking->getAddressService())
+                {{ $booking->getAddressService()->getName() }}
+                <div>(ID: {{ $booking->getAddressService()->getId() }})</div>
+                @else
+                    Address service <br />not exist anymore
+                @endif
             </td>
             <td>
                 @unless($booking->getCanceledBy() || $booking->getStartAt() < (new DateTime))

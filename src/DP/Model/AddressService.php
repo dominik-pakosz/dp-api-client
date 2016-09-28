@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: umitakkaya
- * Date: 22/09/15
- * Time: 14:32
- */
 
 namespace DP\Model;
 
@@ -13,7 +7,7 @@ use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
 
-class DoctorService extends AbstractErrorResponse
+class AddressService extends AbstractErrorResponse
 {
 	/**
 	 * @Type("integer")
@@ -29,17 +23,17 @@ class DoctorService extends AbstractErrorResponse
 
 	/**
 	 * @Type("float")
-	 * @SerializedName("price_min")
+	 * @SerializedName("price")
 	 * @Groups({"get", "patch", "post"})
 	 */
-	private $priceMin;
+	private $price;
 
 	/**
-	 * @Type("float")
-	 * @SerializedName("price_max")
+	 * @Type("boolean")
+	 * @SerializedName("is_price_from")
 	 * @Groups({"get", "patch", "post"})
 	 */
-	private $priceMax;
+	private $isPriceFrom;
 
 	/**
 	 * @Type("integer")
@@ -53,7 +47,6 @@ class DoctorService extends AbstractErrorResponse
 	 * @Groups({"put_slots"})
 	 */
 	private $duration;
-
 
 
 	/**
@@ -78,12 +71,12 @@ class DoctorService extends AbstractErrorResponse
 
 	/**
 	 * @VirtualProperty
-	 * @SerializedName("doctor_service_id")
+	 * @SerializedName("address_service_id")
 	 * @Groups({"put_slots"})
 	 *
 	 * @return int
 	 */
-	public function getDoctorServiceId()
+	public function getAddressServiceId()
 	{
 		return $this->getId();
 	}
@@ -111,42 +104,42 @@ class DoctorService extends AbstractErrorResponse
 	/**
 	 * @return float
 	 */
-	public function getPriceMax()
+	public function getPrice()
 	{
-		return $this->priceMax;
+		return $this->price;
 	}
 
 	/**
-	 * @param float $priceMax
+	 * @param float $price
 	 *
 	 * @return $this
 	 */
-	public function setPriceMax($priceMax)
+	public function setPrice($price)
 	{
-		$this->priceMax = $priceMax;
+		$this->price = $price;
 
 		return $this;
 	}
 
-	/**
-	 * @return float
-	 */
-	public function getPriceMin()
-	{
-		return $this->priceMin;
-	}
+    /**
+     * @return bool
+     */
+    public function getIsPriceFrom()
+    {
+        return $this->isPriceFrom;
+    }
 
-	/**
-	 * @param float $priceMin
-	 *
-	 * @return $this
-	 */
-	public function setPriceMin($priceMin)
-	{
-		$this->priceMin = $priceMin;
+    /**
+     * @param bool $isPriceFrom
+     *
+     * @return $this
+     */
+    public function setIsPriceFrom($isPriceFrom)
+    {
+        $this->isPriceFrom = $isPriceFrom;
 
-		return $this;
-	}
+        return $this;
+    }
 
 	/**
 	 * @return int
@@ -179,7 +172,7 @@ class DoctorService extends AbstractErrorResponse
 	/**
 	 * @param int $duration
 	 *
-	 * @return DoctorService
+	 * @return AddressService
 	 */
 	public function setDuration($duration)
 	{

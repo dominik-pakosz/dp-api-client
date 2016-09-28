@@ -3,8 +3,8 @@
 use App\Initialize;
 use DP\DPClient;
 use DP\Model\BookVisitRequest;
-use DP\Model\DoctorService;
 use DP\Model\PutSlotsRequest;
+use DP\Model\AddressService;
 
 
 require '../vendor/autoload.php';
@@ -129,9 +129,9 @@ $app->get('/forms/book-visit', function () use ($app, $dp)
 
 	$address        = $dp->getAddress($facilityId, $doctorId, $addressId);
 	$doctor         = $dp->getDoctor($facilityId, $doctorId);
-	$doctorServices = $dp->getDoctorServicesForSlot($facilityId, $doctorId, $addressId, $start);
+	$addressServices = $dp->getAddressServicesForSlot($facilityId, $doctorId, $addressId, $start);
 
-	$app->check($doctorServices);
+	$app->check($addressServices);
 	$app->check($address);
 	$app->check($doctor);
 
@@ -141,7 +141,7 @@ $app->get('/forms/book-visit', function () use ($app, $dp)
 		'facilityId'     => $facilityId,
 		'visitStart'     => $start,
 		'extraFields'    => $address->getBookingExtraFields(),
-		'doctorServices' => $doctorServices->getItems()
+		'addressServices' => $addressServices->getItems()
 	]);
 });
 
@@ -155,11 +155,11 @@ $app->get('/forms/put-slots', function () use ($app, $dp)
 
 	$address        = $dp->getAddress($facilityId, $doctorId, $addressId);
 	$doctor         = $dp->getDoctor($facilityId, $doctorId);
-	$doctorServices = $dp->getDoctorServices($facilityId, $doctorId);
+	$addressServices = $dp->getAddressServices($facilityId, $doctorId, $addressId);
 
 	$app->check($address);
 	$app->check($doctor);
-	$app->check($doctorServices);
+	$app->check($addressServices);
 
 	$app->render('partials.forms.put-slots', [
 		'address'        => $address,
@@ -167,7 +167,7 @@ $app->get('/forms/put-slots', function () use ($app, $dp)
 		'start'          => (new \DateTime)->modify('+1 day'),
 		'end'            => (new \DateTime)->modify('+12 weeks'),
 		'facilityId'     => $facilityId,
-		'doctorServices' => $doctorServices->getItems()
+		'addressServices' => $addressServices->getItems()
 	]);
 });
 
@@ -177,37 +177,40 @@ $app->get('/inputs/slot', function () use ($app, $dp)
 	$index      = $app->request()->get('index') ?: 0;
 	$facilityId = $app->request()->get('facility-id');
 	$doctorId   = $app->request()->get('doctor-id');
+    $addressId  = $app->request()->get('address-id');
 
-	$doctorServices = $dp->getDoctorServices($facilityId, $doctorId);
+	$addressServices = $dp->getAddressServices($facilityId, $doctorId, $addressId);
 
-	$app->check($doctorServices);
+	$app->check($addressServices);
 
 	$app->render('partials.forms.inputs.slot', [
 		'index'          => $index,
 		'start'          => (new \DateTime)->modify('+1 day'),
 		'facilityId'     => $facilityId,
 		'doctorId'       => $doctorId,
-		'doctorServices' => $doctorServices->getItems()
+		'addressServices' => $addressServices->getItems(),
+        'addressId'       => $addressId
 	]);
 });
 
-$app->get('/inputs/slot-doctor-service', function () use ($app, $dp)
+$app->get('/inputs/slot-address-service', function () use ($app, $dp)
 {
 	$slotIndex          = $app->request()->get('slot-index') ?: 0;
-	$doctorServiceIndex = $app->request()->get('doctor-service-index') ?: 0;
+	$addressServiceIndex = $app->request()->get('address-service-index') ?: 0;
 
 
 	$facilityId = $app->request()->get('facility-id');
 	$doctorId   = $app->request()->get('doctor-id');
+    $addressId  = $app->request()->get('address-id');
 
-	$doctorServices = $dp->getDoctorServices($facilityId, $doctorId);
+	$addressServices = $dp->getAddressServices($facilityId, $doctorId, $addressId);
 
-	$app->check($doctorServices);
+	$app->check($addressServices);
 
-	$app->render('partials.forms.inputs.slot-doctor-service', [
+	$app->render('partials.forms.inputs.slot-address-service', [
 		'slotIndex'          => $slotIndex,
-		'doctorServiceIndex' => $doctorServiceIndex,
-		'doctorServices'     => $doctorServices->getItems()
+		'addressServiceIndex' => $addressServiceIndex,
+		'addressServices'     => $addressServices->getItems()
 	]);
 });
 
@@ -374,7 +377,7 @@ $app->post(
 		if (isset($data['patient']['birth_date']))
 		{
 			//Let's avoid serializer DateTime format validation with a simple trick
-			$data['patient']['birth_date'] = (new \DateTime($data['patient']['birth_date']))->format(DATETIME::ATOM);
+			$data['patient']['birth_date'] = (new \DateTime($data['patient']['birth_date']))->format(DATE_ATOM);
 		}
 
 
@@ -402,7 +405,6 @@ $app->get('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/bookin
 	{
 		$start = new \DateTime($app->request()->get('start'));
 		$end   = new \DateTime($app->request()->get('end') ?: '+12 weeks');
-
 
 		$bookings = $dp->getBookings($facilityId, $doctorId, $addressId, $start, $end);
 
@@ -450,90 +452,6 @@ $app->delete('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/boo
 	}
 );
 
-$app->get('/facilities/:facilityId/doctors/:doctorId/services',
-	function ($facilityId, $doctorId) use ($app, $dp)
-	{
-		$doctorServices = $dp->getDoctorServices($facilityId, $doctorId);
-
-		$app->check($doctorServices);
-
-		$app->render('partials.modals.doctor-services', [
-			'facilityId'     => $facilityId,
-			'doctorId'       => $doctorId,
-			'doctorServices' => $doctorServices->getItems()
-		]);
-	}
-);
-
-$app->post(
-	'/facilities/:facilityId/doctors/:doctorId/services',
-	function ($facilityId, $doctorId) use ($app, $dp)
-	{
-		$serviceId = $app->request()->post('service-id');
-		$priceMin  = $app->request()->post('minimum-price');
-		$priceMax  = $app->request()->post('maximum-price');
-
-		$doctorService = (new DoctorService)
-			->setServiceId($serviceId)
-			->setPriceMin($priceMin)
-			->setPriceMax($priceMax);
-
-		$newDoctorService = $dp->addDoctorService($facilityId, $doctorId, $doctorService);
-
-		$app->check($newDoctorService);
-
-		$response = [
-			'status'            => true,
-			'doctor-service-id' => $newDoctorService->getId()
-		];
-
-		$app->response()->header('Content-Type', 'application/json');
-		$app->response()->body(json_encode($response));
-
-	}
-);
-
-$app->patch(
-	'/facilities/:facilityId/doctors/:doctorId/services/:doctorServiceId',
-	function ($facilityId, $doctorId, $doctorServiceId) use ($app, $dp)
-	{
-		$priceMin = $app->request()->patch('minimum-price');
-		$priceMax = $app->request()->patch('maximum-price');
-
-		$doctorService = (new DoctorService)
-			->setId($doctorServiceId)
-			->setPriceMin($priceMin)
-			->setPriceMax($priceMax);
-
-
-		$patchedDoctorService = $dp->patchDoctorService($facilityId, $doctorId, $doctorService);
-
-		$app->check($patchedDoctorService);
-
-		$response = [
-			'status'            => true,
-			'doctor-service-id' => $patchedDoctorService->getId(),
-			'min-price'         => $patchedDoctorService->getPriceMin(),
-			'max-price'         => $patchedDoctorService->getPriceMax()
-		];
-
-		$app->response()->header('Content-Type', 'application/json');
-		$app->response()->body(json_encode($response));
-	}
-);
-
-$app->delete(
-	'/facilities/:facilityId/doctors/:doctorId/services/:doctorServiceId',
-	function ($facilityId, $doctorId, $doctorServiceId) use ($app, $dp)
-	{
-		$result = $dp->deleteDoctorService($facilityId, $doctorId, $doctorServiceId);
-
-		$app->check($result);
-
-		$app->response()->status(204);
-	}
-);
-
 $app->error(function (\Exception $e) use ($app)
 {
 	$app->response()->status($e->getCode());
@@ -546,5 +464,217 @@ $app->error(function (\Exception $e) use ($app)
 		)
 	);
 });
+
+
+//add api v3
+$app->get('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/services',
+    function ($facilityId, $doctorId, $addressId) use ($app, $dp)
+    {
+        $addressServices = $dp->getAddressServices($facilityId, $doctorId, $addressId);
+
+        $app->check($addressServices);
+
+        $app->render('partials.modals.address-services', [
+            'facilityId'     => $facilityId,
+            'doctorId'       => $doctorId,
+            'addressId'      => $addressId,
+            'addressServices' => $addressServices->getItems()
+        ]);
+    }
+);
+
+$app->get('/forms/modify-address-service', function () use ($app, $dp)
+{
+    $facilityId      = $app->request()->get('facility-id');
+    $doctorId        = $app->request()->get('doctor-id');
+    $addressId       = $app->request()->get('address-id');
+    $addressServiceId = $app->request()->get('address-service-id');
+
+    $app->render('partials.forms.modify-address-service', [
+        'facilityId'      => $facilityId,
+        'doctorId'        => $doctorId,
+        'addressId'       => $addressId,
+        'addressServiceId' => $addressServiceId
+    ]);
+});
+
+
+$app->patch(
+    '/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/services/:addressServiceId',
+    function ($facilityId, $doctorId, $addressId, $addressServiceId) use ($app, $dp)
+    {
+        $price = $app->request()->patch('price');
+        $isPriceFrom = $app->request()->patch('is-price-from') ? true : false;
+
+        $addressService = new AddressService();
+        $addressService->setId($addressServiceId)
+                        ->setPrice($price)
+                        ->setIsPriceFrom($isPriceFrom);
+
+
+        $patchedAddressService = $dp->patchAddressService($facilityId, $doctorId, $addressId, $addressService);
+
+        $app->check($patchedAddressService);
+
+        $response = [
+            'status'             => true,
+            'address-service-id' => $patchedAddressService->getId(),
+            'price'              => $patchedAddressService->getPrice(),
+            'is-price-from'      => $patchedAddressService->getIsPriceFrom()
+        ];
+
+        $app->response()->header('Content-Type', 'application/json');
+        $app->response()->body(json_encode($response));
+    }
+);
+
+$app->delete(
+    '/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/services/:addressServiceId',
+    function ($facilityId, $doctorId, $addressId, $addressServiceId) use ($app, $dp)
+    {
+        $result = $dp->deleteAddressService($facilityId, $doctorId, $addressId, $addressServiceId);
+
+        $app->check($result);
+
+        $app->response()->status(204);
+    }
+);
+
+$app->post(
+    '/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/services/',
+    function ($facilityId, $doctorId, $addressId) use ($app, $dp)
+    {
+        $serviceId = $app->request()->post('service-id');
+        $price  = $app->request()->post('price');
+        $isPriceFrom  = $app->request()->post('is-price-from') ? true : false;
+
+        /** @var AddressService $addressService */
+        $addressService = new AddressService();
+        $addressService->setServiceId($serviceId)
+                        ->setPrice($price)
+                        ->setIsPriceFrom($isPriceFrom);
+
+        $newAddressService = $dp->addAddressService($facilityId, $doctorId, $addressId, $addressService);
+
+        $app->check($newAddressService);
+
+        $response = [
+            'status'            => true,
+            'address-service-id' => $newAddressService->getId()
+        ];
+
+        $app->response()->header('Content-Type', 'application/json');
+        $app->response()->body(json_encode($response));
+    }
+);
+
+$app->get('/forms/add-address-service', function () use ($app, $dp)
+{
+    $facilityId = $app->request()->get('facility-id');
+    $doctorId   = $app->request()->get('doctor-id');
+    $addressId  = $app->request()->get('address-id');
+    $services   = $dp->getServices();
+
+    $app->check($services);
+
+    $app->render('partials.forms.add-address-service', [
+        'services'   => $services->getItems(),
+        'facilityId' => $facilityId,
+        'doctorId'   => $doctorId,
+        'addressId'  => $addressId
+    ]);
+});
+
+$app->get('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/breaks',
+    function ($facilityId, $doctorId, $addressId) use ($app, $dp)
+    {
+        $since = (new \DateTime('-10 days'))->format('c');
+        $till = (new \DateTime('+10 days'))->format('c');
+
+        $calendarBreaks = $dp->getCalendarBreaks($facilityId, $doctorId, $addressId, $since, $till);
+
+        $app->check($calendarBreaks);
+
+        $app->render('partials.modals.calendar-breaks', [
+            'calendarBreaks' => $calendarBreaks->getItems(),
+            'facilityId'     => $facilityId,
+            'doctorId'       => $doctorId,
+            'addressId'      => $addressId,
+            'since'          => $since,
+            'till'           => $till
+        ]);
+    }
+);
+
+$app->get('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/breaks-list',
+    function ($facilityId, $doctorId, $addressId) use ($app, $dp)
+    {
+        $since = $app->request()->get('start');
+        $till = $app->request()->get('end');
+
+        $calendarBreaks = $dp->getCalendarBreaks($facilityId, $doctorId, $addressId, $since, $till);
+
+        $app->check($calendarBreaks);
+
+        $app->render('partials.calendar-breaks-list', [
+            'calendarBreaks' => $calendarBreaks->getItems(),
+            'facilityId'     => $facilityId,
+            'doctorId'       => $doctorId,
+            'addressId'      => $addressId
+        ]);
+    }
+);
+
+$app->get('/forms/add-calendar-break', function () use ($app, $dp)
+{
+    $since = (new \DateTime('now'))->format('c');
+    $till = (new \DateTime('now'))->format('c');
+    $facilityId = $app->request()->get('facility-id');
+    $doctorId   = $app->request()->get('doctor-id');
+    $addressId  = $app->request()->get('address-id');
+
+    $app->render('partials.forms.add-calendar-break', [
+        'facilityId' => $facilityId,
+        'doctorId'   => $doctorId,
+        'addressId'  => $addressId,
+        'since'      => $since,
+        'till'       => $till
+    ]);
+});
+
+$app->post('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/breaks',
+    function ($facilityId, $doctorId, $addressId) use ($app, $dp)
+    {
+        $since = new DateTime($app->request()->post('start'));
+        $till = new DateTime($app->request()->post('end'));
+
+        $calendarBreak = new \DP\Model\CalendarBreak();
+        $calendarBreak->setSince($since)
+                        ->setTill($till);
+
+        $newCalendarBreak = $dp->addCalendarBreak($facilityId, $doctorId, $addressId, $calendarBreak);
+
+        $app->check($newCalendarBreak);
+
+        $response = [
+            'status'            => true,
+            'calendar-break-id' => $newCalendarBreak->getId()
+        ];
+
+        $app->response()->header('Content-Type', 'application/json');
+        $app->response()->body(json_encode($response));
+    }
+);
+
+$app->delete('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/breaks/:breakId',
+    function ($facilityId, $doctorId, $addressId, $breakId) use ($app, $dp)
+    {
+        $result = $dp->deleteCalendarBreak($facilityId, $doctorId, $addressId, $breakId);
+
+        $app->check($result);
+
+        $app->response()->status(204);
+    }
+);
 
 $app->run();

@@ -66,9 +66,9 @@ class Booking extends AbstractErrorResponse
 	private $patient;
 
 	/**
-	 * @Type("DP\Model\DoctorService")
+	 * @Type("DP\Model\AddressService")
 	 */
-	private $service;
+	private $addressService;
 
 	/**
 	 * @return \DateTime
@@ -231,21 +231,21 @@ class Booking extends AbstractErrorResponse
 	}
 
 	/**
-	 * @return DoctorService
+	 * @return AddressService
 	 */
-	public function getService()
+	public function getAddressService()
 	{
-		return $this->service;
+		return $this->addressService;
 	}
 
 	/**
-	 * @param DoctorService $service
+	 * @param AddressService $service
 	 *
 	 * @return Booking
 	 */
-	public function setService($service)
+	public function setAddressService($service)
 	{
-		$this->service = $service;
+		$this->addressService = $service;
 
 		return $this;
 	}

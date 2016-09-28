@@ -176,11 +176,10 @@
             }).done(function (data) {
 
                 if (data.status === true) {
-                    var doctorServiceId = data['doctor-service-id'];
-                    var $doctorServiceRow = $('tr[data-doctor-service-id=' + doctorServiceId + ']');
+                    var addressServiceId = data['address-service-id'];
+                    var addressServiceRow = $('tr[data-address-service-id=' + addressServiceId + ']');
 
-                    $doctorServiceRow.find('.min-price').text(data['min-price']);
-                    $doctorServiceRow.find('.max-price').text(data['max-price']);
+                    addressServiceRow.find('.price').text(data['price']);
 
                     $this.find('.modal').first().modal('hide');
                 }
@@ -198,10 +197,26 @@
             $.post(url, formData)
                 .done(function (data) {
 
-                    if (data.status === true) {
+                    if (data.id !== null) {
                         $this.find('.modal').first().modal('hide');
                     }
                 });
+
+            e.preventDefault();
+        });
+
+        $container.on('submit', '#form-add-break', function (e) {
+            var $this = $(this);
+            var url = $this.attr('action');
+            var formData = $this.serialize();
+
+            $.post(url, formData)
+                    .done(function (data) {
+
+                        if (data.status === true) {
+                            $this.find('.modal').first().modal('hide');
+                        }
+                    });
 
             e.preventDefault();
         });
@@ -336,21 +351,23 @@
             e.stopPropagation();
         });
 
-        $container.on('click', '.btn-add-doctor-service', function () {
+        $container.on('click', '.btn-add-address-service', function () {
             var $this = $(this);
             var $slot = $this.parents('.slot-input').first();
-            var $target = $slot.find('.doctor-service-inputs');
+            var $target = $slot.find('.address-service-inputs');
             var facilityId = $this.data('facilityId');
             var doctorId = $this.data('doctorId');
+            var addressId = $this.data('addressId');
 
 
             $.ajax({
-                url:'/inputs/slot-doctor-service',
+                url:'/inputs/slot-address-service',
                 data: {
                     'slot-index' : $slot.data('index'),
-                    'doctor-service-index': $target.children('.slot-doctor-service').length,
+                    'address-service-index': $target.children('.slot-address-service').length,
                     'facility-id' : facilityId,
-                    'doctor-id' : doctorId
+                    'doctor-id' : doctorId,
+                    'address-id' : addressId
                 }
             }).done(function (data) {
                 $target.append(data);
@@ -362,13 +379,15 @@
             var $target = $('.slot-inputs');
             var facilityId = $this.data('facilityId');
             var doctorId = $this.data('doctorId');
+            var addressId = $this.data('addressId');
 
             $.ajax({
                 url:'/inputs/slot',
                 data: {
                     index: $target.children('.slot-input').length,
                     'facility-id' : facilityId,
-                    'doctor-id' : doctorId
+                    'doctor-id' : doctorId,
+                    'address-id' : addressId
                 }
             }).done(function (data) {
                 $target.append(data);
@@ -473,7 +492,7 @@
                         "endDate": moment().format('YYYY-MM-DD')
                     });
                 }
-                else if(plugin === 'daterangepicker' || plugin === 'booking-list-range')
+                else if(plugin === 'daterangepicker' || plugin === 'booking-list-range' || plugin === 'calendar-breaks-range')
                 {
                     var allowPast = false;
 
@@ -523,6 +542,20 @@
                                     }
                                 }).done(function (data) {
                                     $context.find('.booking-list').html(data);
+                                });
+                            }
+                            else if(plugin === 'calendar-breaks-range')
+                            {
+                                var url = $this.data('url');
+
+                                $.ajax({
+                                    url: url,
+                                    data: {
+                                        start : start.format(),
+                                        end : end.format()
+                                    }
+                                }).done(function (data) {
+                                    $context.find('.calendar-breaks-list').html(data);
                                 });
                             }
                             else {

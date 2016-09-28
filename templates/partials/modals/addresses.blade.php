@@ -42,10 +42,9 @@
                             <td>
                                 <button type="button"
                                         class="btn btn-sm btn-default btn-remote-modal"
-                                        data-url="/forms/put-slots?facility-id={{ $facilityId }}&doctor-id={{ $doctorId }}&address-id={{ $address->getId() }}"
-                                        data-trigger="datepicker,datetimepicker">
+                                        data-url="/facilities/{{ $facilityId }}/doctors/{{ $doctorId }}/addresses/{{ $address->getId() }}/services">
                                     <span class="glyphicon glyphicon-pencil"></span>
-                                    Put slots
+                                    Address Services
                                 </button>
                             </td>
                         </tr>

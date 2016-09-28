@@ -10,10 +10,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="slot-inputs">
-                        @include('partials.forms.inputs.slot', ['index' => 0, 'facilityId' => $facilityId, 'doctorId' => $doctor->getId()])
+                        @include('partials.forms.inputs.slot', ['index' => 0, 'facilityId' => $facilityId, 'doctorId' => $doctor->getId(), 'addressId' => $address->getId()])
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success btn-sm btn-add-slot" data-doctor-id="{{ $doctor->getId() }}" data-facility-id="{{ $facilityId }}" type="button">
+                        <button class="btn btn-success btn-sm btn-add-slot" data-doctor-id="{{ $doctor->getId() }}" data-facility-id="{{ $facilityId }}" data-address-id="{{ $address->getId() }}" type="button">
                             <span class="glyphicon glyphicon-plus"></span>
                             Add slot
                         </button>

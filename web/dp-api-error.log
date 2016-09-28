@@ -1,0 +1,533 @@
+2016/09/26 11:00:58 [error] 1088#0: *57 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught JMS\Serializer\Exception\RuntimeException: Could not create directory "/Users/Pakoo/PhpstormProjects/sample-api-client/cache". in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/SerializerBuilder.php:397
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/SerializerBuilder.php(107): JMS\Serializer\SerializerBuilder->createDir('/Users/Pakoo/Ph...')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/Initialize.php(124): JMS\Serializer\SerializerBuilder->setCacheDir('/Users/Pakoo/Ph...')
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/Initialize.php(45): App\Initialize->initSerializer()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(12): App\Initialize->__construct()
+#4 {main}
+  thrown in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/SerializerBuilder.php on line 397" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:00:59 [error] 1088#0: *57 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught JMS\Serializer\Exception\RuntimeException: Could not create directory "/Users/Pakoo/PhpstormProjects/sample-api-client/cache". in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/SerializerBuilder.php:397
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/SerializerBuilder.php(107): JMS\Serializer\SerializerBuilder->createDir('/Users/Pakoo/Ph...')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/Initialize.php(124): JMS\Serializer\SerializerBuilder->setCacheDir('/Users/Pakoo/Ph...')
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/Initialize.php(45): App\Initialize->initSerializer()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(12): App\Initialize->__construct()
+#4 {main}
+  thrown in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/SerializerBuilder.php on line 397" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 11:02:19 [error] 1088#0: *61 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:02:21 [error] 1088#0: *61 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:02:48 [error] 1088#0: *61 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:03:37 [error] 1088#0: *61 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:03:40 [error] 1088#0: *61 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:03:47 [error] 1088#0: *61 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:05:23 [error] 1088#0: *75 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:08:43 [error] 1088#0: *81 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:08:44 [error] 1088#0: *81 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:08:46 [error] 1088#0: *81 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:08:50 [error] 1088#0: *81 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:17 [error] 1088#0: *87 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:19 [error] 1088#0: *87 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:21 [error] 1088#0: *87 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:30 [error] 1234#0: *92 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:31 [error] 1234#0: *92 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:32 [error] 1234#0: *92 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:32 [error] 1234#0: *92 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:32 [error] 1234#0: *92 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:32 [error] 1234#0: *92 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:32 [error] 1234#0: *93 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:33 [error] 1234#0: *93 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:19:33 [error] 1234#0: *102 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 11:22:09 [error] 1234#0: *106 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(25): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000"
+2016/09/26 17:03:07 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:03:39 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:03:41 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:03:43 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:04:06 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:04:08 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:04:11 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:04:46 [error] 1234#0: *548 FastCGI sent in stderr: "PHP message: PHP Warning:  require(../vendor/autoload.php): failed to open stream: No such file or directory in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php on line 11
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:0
+PHP message: PHP Fatal error:  require(): Failed opening required '../vendor/autoload.php' (include_path='.:') in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php on line 11
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:0" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:07:11 [error] 1234#0: *560 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:08:34 [error] 1234#0: *567 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function make() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/support/Illuminate/Support/helpers.php:493
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(57): base_path('../templates/')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/clickcoder/slim-blade/src/Blade.php(34): Slim\Views\Blade->getInstance()
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(255): Slim\Views\Blade->render('index', NULL)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/View.php(243): Slim\View->fetch('index', NULL)
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(757): Slim\View->display('index')
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(26): Slim\Slim->render('index', Array)
+#6 [internal function]: {closure}()
+#7 /Users/Pakoo/PhpstormProjects/sample-api-clie" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/26 17:08:44 [error] 1234#0: *567 FastCGI sent in stderr: "PHP message: PHP Warning:  require(../vendor/autoload.php): failed to open stream: No such file or directory in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php on line 11
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:0
+PHP message: PHP Fatal error:  require(): Failed opening required '../vendor/autoload.php' (include_path='.:') in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php on line 11
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:0" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 10:30:00 [error] 556#0: *54 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined method DP\Model\AddressService::setPriceMin() in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:636
+Stack trace:
+#0 [internal function]: {closure}('226402', '161262', '465742')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/SessionCookie.php(110): Slim\Middleware\MethodOverride->call()
+#6 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/SessionMiddleware.php(28): Slim\Middleware\SessionCookie->" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "POST /facilities/226402/doctors/161262/addresses/465742/services HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 10:30:07 [error] 556#0: *54 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined method DP\Model\AddressService::setPriceMin() in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:636
+Stack trace:
+#0 [internal function]: {closure}('226402', '161262', '465742')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/SessionCookie.php(110): Slim\Middleware\MethodOverride->call()
+#6 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/SessionMiddleware.php(28): Slim\Middleware\SessionCookie->" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "POST /facilities/226402/doctors/161262/addresses/465742/services HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 10:42:45 [error] 556#0: *78 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getIsPriceFrom() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:640
+Stack trace:
+#0 [internal function]: {closure}('226402', '161262', '465742')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/SessionCookie.php(110): Slim\Middleware\MethodOverride->call()
+#6 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/SessionMiddleware.php(28): Slim\Middleware\SessionCookie->call()
+#7 /Us" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "POST /facilities/226402/doctors/161262/addresses/465742/services HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 10:43:26 [error] 556#0: *78 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getPrice() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:640
+Stack trace:
+#0 [internal function]: {closure}('226402', '161262', '465742')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/SessionCookie.php(110): Slim\Middleware\MethodOverride->call()
+#6 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/SessionMiddleware.php(28): Slim\Middleware\SessionCookie->call()
+#7 /Users/Pa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "POST /facilities/226402/doctors/161262/addresses/465742/services HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 10:59:01 [error] 556#0: *131 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/src/DP/DPClient.php:741
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php(598): DP\DPClient->patchAddressService('226402', '161262', '465742', NULL)
+#1 [internal function]: {closure}('226402', '161262', '465742', '501070')
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#6 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/SessionCookie.php(110): Slim\Middleware\Method" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "PATCH /facilities/226402/doctors/161262/addresses/465742/services/501070 HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:34:48 [error] 556#0: *470 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:36:38 [error] 556#0: *484 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:37:55 [error] 556#0: *486 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:38:14 [error] 556#0: *490 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:43:39 [error] 556#0: *504 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:54:04 [error] 556#0: *534 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:54:18 [error] 556#0: *534 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/27 15:57:01 [error] 556#0: *537 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined method DP\Model\Booking::getService() in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/Phpstor" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 11:26:45 [error] 577#0: *245 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught TypeError: Argument 2 passed to JMS\Serializer\Handler\DateHandler::serializeDateTime() must be an instance of DateTime, string given in /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/Handler/DateHandler.php:67
+Stack trace:
+#0 [internal function]: JMS\Serializer\Handler\DateHandler->serializeDateTime(Object(JMS\Serializer\JsonSerializationVisitor), '2016-10-01T00:0...', Array, Object(JMS\Serializer\SerializationContext))
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/GraphNavigator.php(179): call_user_func(Array, Object(JMS\Serializer\JsonSerializationVisitor), '2016-10-01T00:0...', Array, Object(JMS\Serializer\SerializationContext))
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/jms/serializer/src/JMS/Serializer/GenericSerializationVisitor.php(146): JMS\Serializer\GraphNavigator->accept('2016-10-01T00:0...', Array, Object(JMS\Serializer\SerializationContext))
+#3 /Users" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "POST /facilities/226402/doctors/308058/addresses/834778/breaks HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 11:29:59 [error] 577#0: *257 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined method DP\Model\CalendarBreaks::getId() in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:727
+Stack trace:
+#0 [internal function]: {closure}('226402', '308058', '834778')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/SessionCookie.php(110): Slim\Middleware\MethodOverride->call()
+#6 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/SessionMiddleware.php(28): Slim\Middleware\SessionCookie->call()" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "POST /facilities/226402/doctors/308058/addresses/834778/breaks HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 11:32:07 [error] 577#0: *259 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined method DP\Model\CalendarBreaks::getId() in /Users/Pakoo/PhpstormProjects/sample-api-client/web/app.php:729
+Stack trace:
+#0 [internal function]: {closure}('226402', '308058', '834778')
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#5 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/slim/slim/Slim/Middleware/SessionCookie.php(110): Slim\Middleware\MethodOverride->call()
+#6 /Users/Pakoo/PhpstormProjects/sample-api-client/src/App/SessionMiddleware.php(28): Slim\Middleware\SessionCookie->call()" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "POST /facilities/226402/doctors/308058/addresses/834778/breaks HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 14:10:46 [error] 577#0: *532 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 14:13:11 [error] 577#0: *564 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 14:13:34 [error] 577#0: *564 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 14:15:00 [error] 577#0: *568 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"
+2016/09/28 14:15:12 [error] 577#0: *568 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function getName() on null in /Users/Pakoo/PhpstormProjects/sample-api-client/cache/4ff8c4edcf8e5caec79a4870a1a2d6b8:40
+Stack trace:
+#0 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/PhpEngine.php(37): include()
+#1 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/Users/Pakoo/Ph...', Array)
+#2 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(134): Illuminate\View\Engines\CompilerEngine->get('../templates//p...', Array)
+#3 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(102): Illuminate\View\View->getContents()
+#4 /Users/Pakoo/PhpstormProjects/sample-api-client/vendor/illuminate/view/Illuminate/View/View.php(76): Illuminate\View\View->renderContents()
+#5 /Users/Pakoo/PhpstormProjects/sa" while reading response header from upstream, client: 127.0.0.1, server: dp.sampleapi, request: "GET /facilities/226402/doctors/308058/addresses/834778/bookings HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dp.sampleapi:8000", referrer: "http://dp.sampleapi:8000/"

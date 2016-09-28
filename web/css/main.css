@@ -74,3 +74,8 @@
 	height: 450px;
 	overflow: auto;
 }
+
+.modal-footer {
+	margin-top: 20px;
+	border-top: 0px;
+}

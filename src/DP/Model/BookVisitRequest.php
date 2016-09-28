@@ -21,9 +21,9 @@ class BookVisitRequest
 
 	/**
 	 * @Type("integer")
-	 * @SerializedName("doctor_service_id")
+	 * @SerializedName("address_service_id")
 	 */
-	private $doctorServiceId;
+	private $addressServiceId;
 
 	/**
 	 * @Type("DP\Model\Patient")
@@ -33,19 +33,19 @@ class BookVisitRequest
 	/**
 	 * @return int
 	 */
-	public function getDoctorServiceId()
+	public function getAddressServiceId()
 	{
-		return $this->doctorServiceId;
+		return $this->addressServiceId;
 	}
 
 	/**
-	 * @param int $doctorServiceId
+	 * @param int $addressServiceId
 	 *
 	 * @return $this
 	 */
-	public function setDoctorServiceId($doctorServiceId)
+	public function setAddressServiceId($addressServiceId)
 	{
-		$this->doctorServiceId = $doctorServiceId;
+		$this->addressServiceId = $addressServiceId;
 
 		return $this;
 	}

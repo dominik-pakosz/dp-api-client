@@ -85,6 +85,14 @@
                 <span class="glyphicon glyphicon-pencil"></span>
                 Put slots
             </button>
+
+            <button type="button"
+                    class="btn btn-default btn-remote-modal"
+                    data-trigger="calendar-breaks-range"
+                    data-url="/facilities/{{ $facilityId }}/doctors/{{ $doctorId }}/addresses/{{ $addressId }}/breaks">
+                <span class="glyphicon glyphicon-list"></span>
+                Calendar breaks
+            </button>
         </div>
     </div>
 </div>

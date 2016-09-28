@@ -1,5 +1,5 @@
 # Sample DP API Client
-Sample client for DocPlanner API
+Sample client for DocPlanner API v3
 
 - Clone the project into a directory
 - `cd` into project directory 
@@ -10,7 +10,7 @@ Sample client for DocPlanner API
 - PHP
 
 #### Note:
-This is not a production ready application, this application might require many improvements. It's just an application to show you how you can integrate with DocPlanner API.
+This is not a production ready application, this application might require many improvements. It's just an application to show you how you can integrate with DocPlanner API v3.
 
 ### NGINX configuration
 	server {

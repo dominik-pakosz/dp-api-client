@@ -12,12 +12,12 @@
                 <div class="booking-form form-content">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="ddl-doctor-service" class="control-label">Service:</label>
-                            <select name="doctor_service_id" id="ddl-doctor-service" required="required"
+                            <label for="ddl-address-service" class="control-label">Service:</label>
+                            <select name="address_service_id" id="ddl-address-service" required="required"
                                     class="form-control">
-                                <option value="">Select doctor service</option>
-                                @foreach($doctorServices as $doctorService)
-                                    <option value="{{ $doctorService->getId() }}">{{ $doctorService->getName() }}</option>
+                                <option value="">Select address service</option>
+                                @foreach($addressServices as $addressService)
+                                    <option value="{{ $addressService->getId() }}">{{ $addressService->getName() }}</option>
                                 @endforeach
                             </select>
                         </div>

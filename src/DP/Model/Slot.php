@@ -25,10 +25,10 @@ class Slot
 	private $end;
 
 	/**
-	 * @Type("array<DP\Model\DoctorService>")
-	 * @SerializedName("doctor_services")
+	 * @Type("array<DP\Model\AddressService>")
+	 * @SerializedName("address_services")
 	 */
-	private $doctorServices;
+	private $addressServices;
 
 	/**
 	 * @return \DateTime
@@ -63,21 +63,21 @@ class Slot
 	}
 
 	/**
-	 * @return DoctorService[]
+	 * @return AddressService[]
 	 */
-	public function getDoctorServices()
+	public function getAddressServices()
 	{
-		return $this->doctorServices;
+		return $this->addressServices;
 	}
 
 	/**
-	 * @param DoctorService[] $doctorServices
+	 * @param AddressServices[] $addressServices
 	 *
 	 * @return Slot
 	 */
-	public function setDoctorServices($doctorServices)
+	public function setAddressServices($addressServices)
 	{
-		$this->doctorServices = $doctorServices;
+		$this->addressServices = $addressServices;
 
 		return $this;
 	}

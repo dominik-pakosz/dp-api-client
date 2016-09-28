@@ -26,26 +26,12 @@
                         <span class="glyphicon glyphicon-list"></span>
                         Addresses
                     </button>
-
-                    <button class="btn btn-default btn-remote-modal" role="button"
-                            data-url="/facilities/{{ $facilityId }}/doctors/{{ $doctor->getId() }}/services">
-                        <span class="glyphicon glyphicon-list"></span>
-                        Services
-                    </button>
                     <button class="btn btn-default btn-remote-modal"
                             data-trigger="daterangepicker"
                             data-url="/forms/calendar?facility-id={{ $facilityId }}&doctor-id={{$doctor->getId()}}">
                         <span class="glyphicon glyphicon-calendar"></span>
                         Calendar
                     </button>
-
-                    <button class="btn btn-default btn-remote-modal"
-                            data-url="/forms/add-doctor-service?facility-id={{ $facilityId }}&doctor-id={{$doctor->getId()}}">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        Add Service
-                    </button>
-
-
                 </div>
             </td>
         </tr>

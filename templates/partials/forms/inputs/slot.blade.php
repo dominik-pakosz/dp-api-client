@@ -15,14 +15,14 @@
                    name="slots[{{ $index }}][end]" required/>
         </div>
     </div>
-    <div class="form-group doctor-service-inputs panel panel-body">
-        @include('partials.forms.inputs.slot-doctor-service', [ 'slotIndex' => $index, 'doctorServiceIndex' => 0, 'facilityId' => $facilityId, 'doctorId' => $doctorId ])
+    <div class="form-group address-service-inputs panel panel-body">
+        @include('partials.forms.inputs.slot-address-service', [ 'slotIndex' => $index, 'addressServiceIndex' => 0, 'facilityId' => $facilityId, 'doctorId' => $doctorId, 'addressId' => $addressId ])
     </div>
     <div class="btn-group">
-        <button class="btn btn-success btn-sm btn-add-doctor-service" data-doctor-id="{{ $doctorId }}"
-                data-facility-id="{{ $facilityId }}" type="button">
+        <button class="btn btn-success btn-sm btn-add-address-service" data-doctor-id="{{ $doctorId }}"
+                data-facility-id="{{ $facilityId }}" data-address-id="{{ $addressId }}" type="button">
             <span class="glyphicon glyphicon-plus"></span>
-            Add doctor service
+            Add address service
         </button>
         @if($index > 0)
             <button class="btn btn-danger btn-sm btn-remove-slot" type="button">
