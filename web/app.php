@@ -5,6 +5,7 @@ use DP\DPClient;
 use DP\Model\BookVisitRequest;
 use DP\Model\PutSlotsRequest;
 use DP\Model\AddressService;
+use DP\Model\MoveVisitRequest;
 
 
 require '../vendor/autoload.php';
@@ -674,6 +675,129 @@ $app->delete('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/bre
         $app->check($result);
 
         $app->response()->status(204);
+    }
+);
+
+$app->get('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/bookings/:bookingId/presence/patient',
+    function ($facilityId, $doctorId, $addressId, $bookingId) use ($app, $dp)
+    {
+        $app->render('partials.modals.mark-presence', [
+            'facilityId' => $facilityId,
+            'doctorId'   => $doctorId,
+            'addressId'  => $addressId,
+            'bookingId'  => $bookingId
+        ]);
+    }
+);
+
+$app->post('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/bookings/:bookingId/presence/patient',
+    function ($facilityId, $doctorId, $addressId, $bookingId) use ($app, $dp)
+    {
+        $result = $dp->markShow($facilityId, $doctorId, $addressId, $bookingId);
+
+        $app->check($result);
+
+        $app->response()->status(204);
+    }
+);
+
+$app->delete('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/bookings/:bookingId/presence/patient',
+    function ($facilityId, $doctorId, $addressId, $bookingId) use ($app, $dp)
+    {
+        $result = $dp->markNoShow($facilityId, $doctorId, $addressId, $bookingId);
+
+        $app->check($result);
+
+        $app->response()->status(204);
+    }
+);
+
+$app->get('/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/bookings/:bookingId/slots-moving', function ($facilityId, $doctorId, $addressId, $bookingId) use ($app, $dp)
+{
+    $start     = (new \DateTime)->modify('-1 day');
+    $end       = (new \DateTime)->modify('12 weeks');
+
+    $slots = $dp->getSlots($facilityId, $doctorId, $addressId, $start, $end);
+
+    $app->check($slots);
+
+    $slots = $slots->getItems();
+
+    $interval   = new DateInterval('P1D');
+    $rangeStart = clone $start->modify('this week Monday')->setTime(0, 0, 0);
+    $rangeEnd   = clone $end->modify('this week Sunday')->setTime(0, 0, 0)->add($interval);
+
+    $range = new DatePeriod(
+        $rangeStart,
+        $interval,
+        $rangeEnd
+    );
+
+    $slotList = [];
+
+    /** @var \DateTime $date */
+    foreach ($range as $date)
+    {
+        $ymd            = $date->format('Y-m-d');
+        $slotList[$ymd] = [];
+    }
+
+
+    /** @var string */
+    foreach ($slots as $slot)
+    {
+        $ymd              = $slot->getStart()->format('Y-m-d');
+        $slotList[$ymd][] = $slot->getStart();
+    }
+
+    $app->render('partials.modals.slots-moving', [
+        'slotChunks' => array_chunk($slotList, 7, true),
+        'facilityId' => $facilityId,
+        'doctorId'   => $doctorId,
+        'addressId'  => $addressId,
+        'bookingId'  => $bookingId
+    ]);
+});
+
+$app->get('/forms/move-visit', function () use ($app, $dp)
+{
+    $facilityId = $app->request()->get('facility-id');
+    $doctorId   = $app->request()->get('doctor-id');
+    $addressId  = $app->request()->get('address-id');
+    $bookingId  = $app->request()->get('booking-id');
+    $start      = new \DateTime($app->request()->get('start'));
+
+    $address        = $dp->getAddress($facilityId, $doctorId, $addressId);
+    $doctor         = $dp->getDoctor($facilityId, $doctorId);
+    $addressServices = $dp->getAddressServicesForSlot($facilityId, $doctorId, $addressId, $start);
+
+    $app->check($addressServices);
+    $app->check($address);
+    $app->check($doctor);
+
+    $app->render('partials.forms.move-visit', [
+        'address'        => $address,
+        'doctor'         => $doctor,
+        'facilityId'     => $facilityId,
+        'visitStart'     => $start,
+        'addressServices' => $addressServices->getItems(),
+        'bookingId'       => $bookingId
+    ]);
+});
+
+$app->post(
+    '/facilities/:facilityId/doctors/:doctorId/addresses/:addressId/bookings/:bookingId/move',
+    function ($facilityId, $doctorId, $addressId, $bookingId) use ($app, $dp, $serializer)
+    {
+        $data  = $app->request()->post();
+        $data['start'] = (new \DateTime($data['start'], new DateTimeZone('Europe/Warsaw')))->format(DATE_ATOM);
+
+        /** @var BookVisitRequest $bookVisitRequest */
+        $moveVisitRequest = $serializer->deserialize(json_encode($data), MoveVisitRequest::class, 'json');
+
+        $moveVisitResponse = $dp->moveBooking($facilityId, $doctorId, $addressId, $bookingId, $moveVisitRequest);
+
+        $app->check($moveVisitResponse);
     }
 );
 

@@ -26,6 +26,9 @@ use DP\Model\DoctorsResponse;
 use DP\Model\Error;
 use DP\Model\Facility;
 use DP\Model\FacilitiesResponse;
+use DP\Model\MoveVisitResponse;
+use DP\Model\NoShowResponse;
+use DP\Model\ShowResponse;
 use DP\Model\PutSlotsRequest;
 use DP\Model\PutSlotsResponse;
 use DP\Model\ServicesResponse;
@@ -208,13 +211,13 @@ class DPClient
 	 * @param string                 $className If you omit this parameter you will get Response object
 	 * @param DeserializationContext $context
 	 *
-	 * @return FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|SlotsResponse|Response
+	 * @return CalendarBreak|CalendarBreaks|DeleteAddressServiceResponse|AddressServices|CancelVisitResponse|BookingsResponse|FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|SlotsResponse|DeleteSlotsResponse|Response
 	 * @throws \Exception
 	 */
 	private function authorizedRequest(RequestInterface $request, $className = null, DeserializationContext $context = null)
 	{
 
-		/** @var FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|SlotsResponse $object */
+		/** @var BookingsResponse|FacilitiesResponse|Facility|Address|AddressesResponse|DoctorsResponse|Doctor|ServicesResponse|BookingsResponse|BookVisitResponse|PutSlotsResponse|DeleteSlotsResponse|SlotsResponse $object */
 		/** @var Error $error */
 		$object   = null;
 		$response = null;
@@ -762,14 +765,7 @@ class DPClient
         return $newCalendarBreak;
     }
 
-    /**
-     * @param int $facilityId
-     * @param int $doctorId
-     * @param int $addressId
-     * @param int $calendarBreakId
-     *
-     * @return DeleteCalendarBreakResponse $response
-     */
+
     public function deleteCalendarBreak($facilityId, $doctorId, $addressId, $calendarBreakId)
     {
         $request = $this->client->delete([
@@ -784,5 +780,54 @@ class DPClient
         $response = $this->authorizedRequest($request, DeleteCalendarBreakResponse::class);
 
         return $response;
+    }
+
+    public function markShow($facilityId, $doctorId, $addressId, $bookingId)
+    {
+        $request = $this->client->post([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/bookings/{bookingId}/presence/patient', [
+                'facilityId' => $facilityId,
+                'doctorId'   => $doctorId,
+                'addressId'  => $addressId,
+                'bookingId'  => $bookingId
+            ]
+        ]);
+
+        $response = $this->authorizedRequest($request, ShowResponse::class);
+
+        return $response;
+    }
+
+    public function markNoShow($facilityId, $doctorId, $addressId, $bookingId)
+    {
+        $request = $this->client->delete([
+            'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/bookings/{bookingId}/presence/patient', [
+                'facilityId' => $facilityId,
+                'doctorId'   => $doctorId,
+                'addressId'  => $addressId,
+                'bookingId'  => $bookingId
+            ]
+        ]);
+
+        $response = $this->authorizedRequest($request, NoShowResponse::class);
+
+        return $response;
+    }
+
+    public function moveBooking($facilityId, $doctorId, $addressId, $bookingId, $moveVisitRequest)
+    {
+        $requestBody = $this->serializer->serialize($moveVisitRequest, 'json', SerializationContext::create());
+
+        $request =
+            $this->client->post([
+                'facilities/{facilityId}/doctors/{doctorId}/addresses/{addressId}/bookings/{bookingId}/move', [
+                    'facilityId' => $facilityId,
+                    'doctorId'   => $doctorId,
+                    'addressId'  => $addressId,
+                    'bookingId'  => $bookingId
+                ]
+            ], null, $requestBody);
+
+        return $this->authorizedRequest($request, MoveVisitResponse::class);
     }
 }

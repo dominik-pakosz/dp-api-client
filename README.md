@@ -11,6 +11,7 @@ Sample client for DocPlanner API v3
 
 #### Note:
 This is not a production ready application, this application might require many improvements. It's just an application to show you how you can integrate with DocPlanner API v3.
+If you want to use any parts of the code, feel free, but remember about adding some validations/improvements.
 
 ### NGINX configuration
 	server {

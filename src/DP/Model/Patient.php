@@ -46,7 +46,7 @@ class Patient
 	private $email;
 
 	/**
-	 * @Type("DateTime<'Y-m-d\TH:i:sP'>")
+	 * @Type("DateTime<'Y-m-d'>")
 	 * @SerializedName("birth_date")
 	 * @Groups({"get"})
 	 */

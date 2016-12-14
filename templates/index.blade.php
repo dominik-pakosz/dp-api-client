@@ -313,6 +313,20 @@
             }
         });
 
+        $container.on('click', '.btn-presence-call', function () {
+            var $this = $(this);
+            var url = $this.data('url');
+            var method = $this.data('method');
+
+            $.ajax({
+                url: url,
+                method: method
+            }).done(function () {
+                $this.find('.modal').modal('hide');
+            });
+
+        });
+
         $container.on('click', '.btn-clear-slots', function (e) {
             var $this = $(this);
             var date = $this.data('ymd');

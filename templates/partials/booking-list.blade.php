@@ -7,7 +7,7 @@
         <th>Canceled</th>
         <th>Patient</th>
         <th>Service</th>
-        <th>Cancel</th>
+        <th>Operations</th>
     </tr>
     </thead>
     <tbody>
@@ -53,6 +53,20 @@
                         <span class="glyphicon glyphicon-remove"></span>
                         Cancel
                     </button>
+                    <button type="button"
+                            class="btn btn-sm btn-warning btn-remote-modal"
+                            data-url="/facilities/{{ $facilityId }}/doctors/{{ $doctorId }}/addresses/{{ $addressId }}/bookings/{{ $booking->getId() }}/slots-moving">
+                        <span class="glyphicon glyphicon-share-alt"></span>
+                        Move
+                    </button>
+                @endunless
+                @unless($booking->getCanceledBy() || $booking->getStartAt() > (new DateTime) || 'doctor' == $booking->getBookedBy())
+                <button type="button"
+                        class="btn btn-sm btn-default btn-remote-modal"
+                        data-url="/facilities/{{ $facilityId }}/doctors/{{ $doctorId }}/addresses/{{ $addressId }}/bookings/{{ $booking->getId() }}/presence/patient">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Mark presence
+                </button>
                 @endunless
             </td>
 
